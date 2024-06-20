@@ -1,8 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 <head>
     <meta charset="UTF-8">
     <title>게시물 작성</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
 </head>
 <body>
     <h1>게시물 작성</h1>
@@ -10,18 +11,18 @@
         {{ form.hidden_tag() }}
         <p>
             {{ form.title.label }}<br>
-            {{ form.title(size=32) }}<br>
+            {{ form.title(class_='form-control') }}<br>
         </p>
         <p>
             {{ form.content.label }}<br>
-            {{ form.content(rows=10, cols=40) }}<br>
+            {{ form.content(class_='form-control') }}<br>
         </p>
         <p>
             {{ form.author.label }}<br>
-            {{ form.author(size=32) }}<br>
+            {{ form.author(class_='form-control') }}<br>
         </p>
         <p>
-            <input type="submit" value="제출">
+            {{ form.submit(class_='btn btn-primary') }}
         </p>
     </form>
 </body>

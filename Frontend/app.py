@@ -26,5 +26,10 @@ def post():
         return redirect(url_for('home'))
     return render_template('post.html', form=form)
 
+@app.route('/delete/<int:post_id>', methods=['POST'])
+def delete(post_id):
+    requests.delete(f"{API_URL}/posts/{post_id}")
+    return redirect(url_for('home'))
+
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=5000)

@@ -1,11 +1,12 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 <head>
     <meta charset="UTF-8">
     <title>게시판</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
 </head>
 <body>
-    <h1>게시판</h1>
+    <h1><a href="index.html" style="text-decoration: none; color: inherit;">게시판</a></h1>
     <a href="{{ url_for('post') }}">게시물 작성하기</a>
     <div id="posts">
         {% for post in posts %}
@@ -13,6 +14,9 @@
                 <h2>{{ post.title }}</h2>
                 <p>{{ post.content }}</p>
                 <p>작성자: {{ post.author }}</p>
+                <form method="POST" action="{{ url_for('delete', post_id=post.id) }}">
+                    <button type="submit">삭제</button>
+                </form>
             </div>
         {% endfor %}
     </div>
